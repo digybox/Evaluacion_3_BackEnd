@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Reservas</h1>
+
+<div class="card">
+    <a class="btn btn-green" href="/reservas/nueva/">Nueva Reserva</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Sala</th>
+            <th>Persona</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for r in reservas %}
+        <tr>
+            <td>{{ r.sala.nombre }}</td>
+            <td>{{ r.persona }}</td>
+            <td>{{ r.inicio }}</td>
+            <td>{{ r.fin }}</td>
+            <td>
+                <a class="btn" href="/reservas/editar/{{ r.id }}/">Editar</a>
+                <a class="btn btn-danger" href="/reservas/eliminar/{{ r.id }}/">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" style="text-align:center;">No hay reservas registradas</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+

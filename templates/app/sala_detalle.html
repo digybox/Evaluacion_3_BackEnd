@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Detalle de Sala</h1>
+
+<div class="card">
+    <h2>{{ sala.nombre }}</h2>
+
+    <p><strong>Capacidad:</strong> {{ sala.capacidad }}</p>
+
+    <p>
+        <strong>Estado:</strong>
+        {% if sala.disponible %}
+            <span class="td-disponible">Disponible</span>
+        {% else %}
+            <span class="td-ocupada">Ocupada</span>
+        {% endif %}
+    </p>
+
+    <h3>Reserva activa</h3>
+
+    {% if reserva %}
+        <p><strong>RUT:</strong> {{ reserva.persona }}</p>
+        <p><strong>Inicio:</strong> {{ reserva.inicio }}</p>
+        <p><strong>Fin:</strong> {{ reserva.fin }}</p>
+    {% else %}
+        <p>No hay una reserva activa ahora.</p>
+    {% endif %}
+</div>
+
+<a href="{% url 'salas_list' %}" class="btn">Volver</a>
+{% endblock %}
+
