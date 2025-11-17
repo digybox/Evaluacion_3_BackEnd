@@ -9,7 +9,7 @@ urlpatterns = [
     path("salas/editar/<int:id>/", views.sala_editar, name="sala_editar"),
     path("salas/eliminar/<int:id>/", views.sala_eliminar, name="sala_eliminar"),
 
-    # ESTA ES LA CRÍTICA
+
     path("salas/<int:id>/", views.sala_detalle, name="sala_detalle"),
 
     path("reservas/", views.reservas_list, name="reservas_list"),
