@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from datetime import timedelta
 
 
 class Sala(models.Model):
@@ -29,9 +30,20 @@ class Reserva(models.Model):
     fin = models.DateTimeField()
 
     def clean(self):
+        # Validación básica
         if self.inicio >= self.fin:
             raise ValidationError("La hora de inicio debe ser menor a la hora de fin.")
 
+        # Validación de duración mínima y máxima
+        duracion = self.fin - self.inicio
+
+        if duracion < timedelta(hours=1):
+            raise ValidationError("La reserva debe ser de al menos 1 hora.")
+
+        if duracion > timedelta(hours=2):
+            raise ValidationError("La reserva no puede exceder las 2 horas.")
+
+        # Validación de solapamiento
         solapada = Reserva.objects.filter(
             sala=self.sala,
             inicio__lt=self.fin,
@@ -53,3 +65,4 @@ class Reserva(models.Model):
 
     def __str__(self):
         return f"{self.persona} - {self.sala.nombre}"
+
