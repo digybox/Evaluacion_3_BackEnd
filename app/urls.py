@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"),
 
-<<<<<<< HEAD
+
     # Salas (solo admin)
     path("salas/", views.salas_list, name="salas_list"),
     path("salas/nueva/", views.sala_crear, name="sala_crear"),
@@ -18,7 +18,7 @@ urlpatterns = [
     path("reservas/<int:id>/editar/", views.reserva_editar, name="reserva_editar"),
     path("reservas/<int:id>/eliminar/", views.reserva_eliminar, name="reserva_eliminar"),
 ]
-=======
+
     path("salas/", views.salas_list, name="salas_list"),
     path("salas/nueva/", views.sala_crear, name="sala_crear"),
     path("salas/editar/<int:id>/", views.sala_editar, name="sala_editar"),
