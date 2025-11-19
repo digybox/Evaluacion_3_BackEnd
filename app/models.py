@@ -34,7 +34,6 @@ class Reserva(models.Model):
         if self.inicio >= self.fin:
             raise ValidationError("La hora de inicio debe ser menor a la hora de fin.")
 
-        # Validación de duración mínima y máxima
         duracion = self.fin - self.inicio
 
         if duracion < timedelta(hours=1):
@@ -43,7 +42,6 @@ class Reserva(models.Model):
         if duracion > timedelta(hours=2):
             raise ValidationError("La reserva no puede exceder las 2 horas.")
 
-        # Validación de solapamiento
         solapada = Reserva.objects.filter(
             sala=self.sala,
             inicio__lt=self.fin,
