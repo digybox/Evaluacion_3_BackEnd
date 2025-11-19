@@ -6,7 +6,8 @@ venv\Scripts\activate
 
 3) Instalar dependencias AUTOMÁTICAMENTE
 pip install -r requirements.txt   
-
+pip install django
+pip install django-environ
 Si te tira error en oracledb==2.1.1, INSTALA ESTA:
 pip install oracledb
 pip install python-dotenv
