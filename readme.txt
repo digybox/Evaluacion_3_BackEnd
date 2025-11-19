@@ -58,5 +58,12 @@ python manage.py runserver
 La forma más estable es SQL*Plus:
 sqlplus django/django123@localhost:1521/XEPDB1
 Ver tablas: SELECT table_name FROM user_tables;
+
+COLUMN PERSONA FORMAT A20
+COLUMN INICIO FORMAT A20
+COLUMN FIN FORMAT A20
+COLUMN SALA_ID FORMAT 99999
+
 Ver salas: SELECT * FROM APP_SALA;
+
 Ver reservas: SELECT * FROM APP_RESERVA;
