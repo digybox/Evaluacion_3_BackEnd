@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Salas Disponibles</h1>
+
+<div class="cards">
+    {% for sala in salas %}
+        <div class="card">
+            <h2>{{ sala.nombre }}</h2>
+            <p>Capacidad: {{ sala.capacidad }}</p>
+
+            {% if sala.disponible %}
+                <p class="estado disponible">Disponible</p>
+            {% else %}
+                <p class="estado ocupada">Ocupada</p>
+                {% if sala.obtener_reserva_activa %}
+                    <p>Ocupada hasta: <strong>{{ sala.obtener_reserva_activa.fin }}</strong></p>
+                {% endif %}
+            {% endif %}
+
+            <a href="{% url 'sala_detalle' sala.id %}" class="btn">Ver Detalle</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

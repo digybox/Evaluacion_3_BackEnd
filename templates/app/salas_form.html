@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ titulo }}</h1>
+
+<div class="card">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn btn-green" type="submit">Guardar</button>
+    </form>
+</div>
+
+{% endblock %}
+
+

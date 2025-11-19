@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>Gestión de Salas</h1>
+
+        <nav class="nav">
+            <a href="{% url 'home' %}">Inicio</a>
+
+            {% if user.is_authenticated %}
+
+                <!-- Todos los usuarios logueados pueden reservar -->
+                <a href="{% url 'reservar' %}">Reservar sala</a>
+
+                {% if user.is_staff %}
+                    <a href="{% url 'salas_list' %}">Gestionar salas</a>
+                    <a href="{% url 'reservas_list' %}">Ver reservas</a>
+                {% endif %}
+
+                <span class="nav-user">Usuario: {{ user.username }}</span>
+
+                <!-- CERRAR SESIÓN CORRECTO (POST OBLIGATORIO) -->
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-logout" style="background:none;border:none;color:#c00;cursor:pointer;">
+                        Cerrar sesión
+                    </button>
+                </form>
+
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
+
