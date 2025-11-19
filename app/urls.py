@@ -32,4 +32,3 @@ urlpatterns = [
     path("reservas/editar/<int:id>/", views.reserva_editar, name="reserva_editar"),
     path("reservas/eliminar/<int:id>/", views.reserva_eliminar, name="reserva_eliminar"),
 ]
->>>>>>> 948abcf8f54b812fa17f640d3add663291a2c337
