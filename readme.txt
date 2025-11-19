@@ -10,6 +10,7 @@ pip install -r requirements.txt
 Si te tira error en oracledb==2.1.1, INSTALA ESTA:
 pip install oracledb
 pip install python-dotenv
+pip install django-environ
 
 4) Crear el archivo .env
 Crea un archivo .env con:
