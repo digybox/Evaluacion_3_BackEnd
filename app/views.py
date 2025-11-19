@@ -22,7 +22,6 @@ def home(request):
     })
 
 
-# ---------- ADMIN SALAS ----------
 
 @login_required
 @user_passes_test(es_admin)
@@ -66,7 +65,6 @@ def sala_eliminar(request, id):
     return redirect("salas_list")
 
 
-# ---------- RESERVAS ----------
 
 @login_required
 @user_passes_test(es_admin)
@@ -115,7 +113,6 @@ def reserva_eliminar(request, id):
     return redirect("reservas_list")
 
 
-# ---------- DETALLE DE SALA ----------
 
 def sala_detalle(request, id):
     sala = get_object_or_404(Sala, id=id)
@@ -129,7 +126,6 @@ def sala_detalle(request, id):
     })
 
 
-# ---------- LOGOUT ----------
 
 def cerrar_sesion(request):
     logout(request)
