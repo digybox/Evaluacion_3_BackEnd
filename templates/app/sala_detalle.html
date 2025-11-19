@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Detalle de {{ sala.nombre }}</h1>
+
+<div class="card">
+    <p><strong>Capacidad:</strong> {{ sala.capacidad }}</p>
+    <p><strong>Estado:</strong> 
+        {% if sala.disponible %} Disponible {% else %} Ocupada {% endif %}
+    </p>
+</div>
+
+<hr>
+
+<h2>Reservas de esta sala</h2>
+
+{% if reservas %}
+    <ul class="list">
+        {% for r in reservas %}
+            <li>{{ r.usuario.username }} — {{ r.inicio }} → {{ r.fin }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay reservas para esta sala.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <a class="btn" href="{% url 'reservar' %}">Reservar aquí</a>
+{% else %}
+    <p>Debe iniciar sesión para reservar.</p>
+{% endif %}
+
+{% endblock %}
+

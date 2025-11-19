@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  oracle:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.oracle
+    container_name: oracle_biblioteca
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: "Clave123"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  oracle_data:

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entornos
+venv/
+env/
+
+# Django
+db.sqlite3
+/staticfiles/
+
+# VSCode
+.vscode/
+
+# Oracle Client
+instantclient_*/
+
+# Variables de entorno
+.env
