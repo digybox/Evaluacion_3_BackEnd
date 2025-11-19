@@ -29,11 +29,16 @@
 
             <td>
                 <a class="btn-small" href="{% url 'sala_detalle' sala.id %}">Ver</a>
+<<<<<<< HEAD
 
                 {% if user.is_staff %}
                     <a class="btn-small" href="{% url 'sala_editar' sala.id %}">Editar</a>
                     <a class="btn-small btn-danger" href="{% url 'sala_eliminar' sala.id %}">Eliminar</a>
                 {% endif %}
+=======
+                <a class="btn-small" href="{% url 'sala_editar' sala.id %}">Editar</a>
+                <a class="btn-small btn-danger" href="{% url 'sala_eliminar' sala.id %}">Eliminar</a>
+>>>>>>> 948abcf8f54b812fa17f640d3add663291a2c337
             </td>
         </tr>
         {% endfor %}
